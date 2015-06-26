@@ -50,6 +50,11 @@ Pies* ListaPsow::getPies(int id)
     return 0;
 }
 
+void ListaPsow::wyczysc()
+{
+    listaPsow.clear();
+}
+
 ListaPsow::ListaPsow(const ListaPsow &) {}
 
 ListaPsow &ListaPsow::operator=(const ListaPsow)

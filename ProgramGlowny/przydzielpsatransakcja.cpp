@@ -1,9 +1,10 @@
 #include "przydzielpsatransakcja.h"
 #include "listapsow.h"
-//#include "rejestracjawydanychpsow.h"
+#include "wydaniepsa.h"
+#include "rejestr.h"
 
 extern ListaPsow gListaPsow;
-//extern RejestracjaWydanychPsow gRejestracjaWydanychPsow;
+extern Rejestr gRejestr;
 
 PrzydzielPsaTransakcja::PrzydzielPsaTransakcja(Pies* pies, Klient* klient, QDate *dataPrzydzielenia)
     : wskPies(pies),
@@ -15,6 +16,8 @@ PrzydzielPsaTransakcja::PrzydzielPsaTransakcja(Pies* pies, Klient* klient, QDate
 void PrzydzielPsaTransakcja::wykonaj()
 {
     gListaPsow.usunPsa(wskPies);
+    WydaniePsa* wydaniePsa = new WydaniePsa(wskPies, wskKlient, dataPrzydzielenia);
+    gRejestr.dodaj(wydaniePsa);
 //    wskPies->setDatePrzydzielenia(dataPrzydzielenia); // transakcja ustawia psu datę kiedy został przydzielony
 //    gRejestracjaWydanychPsow.dodaj(wskPies, wskKlient);
 }

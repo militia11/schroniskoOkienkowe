@@ -12,10 +12,11 @@ public:
     ~ListaPsow();
 
     void dodajPsa(Pies* pies);
-    void usunPsa(Pies *pies);
+    void usunPsa(Pies* pies);
     QStringList getListaPsow();
     QStringList getListaPsow(RodzajPsa rodzaj);
     Pies *getPies(int id);
+    void wyczysc();
 
 private:
     ListaPsow(const ListaPsow&);

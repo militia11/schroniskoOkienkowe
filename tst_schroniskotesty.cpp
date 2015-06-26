@@ -11,7 +11,7 @@
 #include "ProgramGlowny/przydzielpsatransakcja.h"
 
 extern  ListaPsow gListaPsow;
-extern  Rejestr gRejest;
+extern  Rejestr gRejestr;
 
 class SchroniskoTesty : public QObject
 {
@@ -154,43 +154,26 @@ void SchroniskoTesty::testPrzydzieleniePsa()
     gListaPsow.dodajPsa(wskPies);  // przypadek testowy pokazał, że potrzebujemy globalnej listy psów
     assert(gListaPsow.getPies(1));
 
-    Klient* wskKlient = new Klient(346, "Jan", "Bury", "ul. Osa 12; Bydgoszcz; 85790", 857464757);
+    Klient* wskKlient = new Klient(2, "Jan", "Bury", "ul. Osa 12; Bydgoszcz; 85790", 857464757);
 
     QDate* wskDataPrzydzielenia = new QDate(2014, 07, 23);
     PrzydzielPsaTransakcja przydzielPsa(wskPies, wskKlient , wskDataPrzydzielenia);
     przydzielPsa.wykonaj();
 
-//    Klient* wskKlientPobrany = gRejestracjaWydanychPsow[wskPies];      // pobranie klienta z rejestracji ( mapy psów i klientów )
-//    assert(wskKlientPobrany);
+    Pies* wskPiesPobrany = gRejestr.getPies(1);
+    assert(wskPiesPobrany);
 
-//    Pies* wskPiesPobrany = gRejestracjaWydanychPsow.key(wskKlient);
-//    assert(wskPiesPobrany);          // test pokazał, że wymagamy klas RejestracjaWydanychPsow oraz Klient
+    Klient* wskKlientPobrany = gRejestr.getKlient(2);
+    assert(wskKlientPobrany);
 
-    // sprawdzenie czy pies został jednocześnie usunięty z listy psów dostępnych
     Pies* wskPiesZListyPsow = gListaPsow.getPies(1);
     assert( wskPiesZListyPsow == 0 );
 
 //    QDate* wskPobranaData = wskPies->getDataPrzydzielenia(); // data dodana, wskaźnik pobrany oraz wskaźnik na dodaną datę
 //    QCOMPARE(wskDataPrzydzielenia, wskPobranaData);          // pokazują na ten sam adres
 
-//    qDeleteAll(gRejestracjaWydanychPsow);  // wyczyszczenie mapy po teście
-//    gRejestracjaWydanychPsow.clear();
-}
-
-void SchroniskoTesty::testDatyPrzydzielenia()
-{
-//    Pies* wskPies = new Pies(3, "Alf", 8, Grozny, "Doberman" );
-//    gListaPsow.dodajPsa(wskPies);  // przypadek testowy pokazał, że potrzebujemy globalnej listy psów
-//    Klient* wskKlient = new Klient(346, "Józef", "Harny", "ul. Basztowa 43/20; Bydgoszcz; 85790", 647578574);
-//    QDate* wskDataPrzydzielenia = new QDate(2014, 07, 23);
-//    PrzydzielPsaTransakcja przydzielPsa(wskPies, wskKlient , wskDataPrzydzielenia);
-//    przydzielPsa.wykonaj();
-
-//    QDate* wskPobranaData = wskPies->getDataPrzydzielenia(); // data dodana, wskaźnik pobrany oraz wskaźnik na dodaną datę
-//    QCOMPARE(wskDataPrzydzielenia, wskPobranaData);          // pokazują na ten sam adres
-
-//    qDeleteAll(gRejestracjaWydanychPsow);  // wyczyszczenie mapy po teście
-//    gRejestracjaWydanychPsow.clear();
+    gListaPsow.wyczysc();
+    gRejestr.wyczysc();
 }
 
 void SchroniskoTesty::testAtrybutyKlienta()
@@ -237,6 +220,21 @@ void SchroniskoTesty::testWyswietlenieListyPrzydzielen()
 //    qDebug() << gRejestracjaWydanychPsow.listaPrzydzielenPsow();
 }
 
+void SchroniskoTesty::testDatyPrzydzielenia()
+{
+//    Pies* wskPies = new Pies(3, "Alf", 8, Grozny, "Doberman" );
+//    gListaPsow.dodajPsa(wskPies);  // przypadek testowy pokazał, że potrzebujemy globalnej listy psów
+//    Klient* wskKlient = new Klient(346, "Józef", "Harny", "ul. Basztowa 43/20; Bydgoszcz; 85790", 647578574);
+//    QDate* wskDataPrzydzielenia = new QDate(2014, 07, 23);
+//    PrzydzielPsaTransakcja przydzielPsa(wskPies, wskKlient , wskDataPrzydzielenia);
+//    przydzielPsa.wykonaj();
+
+//    QDate* wskPobranaData = wskPies->getDataPrzydzielenia(); // data dodana, wskaźnik pobrany oraz wskaźnik na dodaną datę
+//    QCOMPARE(wskDataPrzydzielenia, wskPobranaData);          // pokazują na ten sam adres
+
+//    qDeleteAll(gRejestracjaWydanychPsow);  // wyczyszczenie mapy po teście
+//    gRejestracjaWydanychPsow.clear();
+}
 QTEST_APPLESS_MAIN(SchroniskoTesty)
 
 #include "tst_schroniskotesty.moc"

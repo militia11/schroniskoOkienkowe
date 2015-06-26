@@ -8,13 +8,14 @@ class Klient;
 class WydaniePsa
 {
 public:
-    WydaniePsa();
+    WydaniePsa(Pies* pies, Klient* klient, QDate* dataWydania);
 
+    Pies* getPies();
+    Klient* getKlient();
 private:
-    QDate* dataWydania;
     Pies* pies;
     Klient* klient;
-
+    QDate* dataWydania;
 };
 
 #endif // WYDANIEPSA_H
