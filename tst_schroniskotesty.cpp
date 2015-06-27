@@ -7,11 +7,12 @@
 #include "ProgramGlowny/listapsow.h"
 #include "ProgramGlowny/transakcja.h"
 #include "ProgramGlowny/klient.h"
-#include "ProgramGlowny/rejestr.h"
 #include "ProgramGlowny/przydzielpsatransakcja.h"
-
-extern  ListaPsow gListaPsow;
-extern  Rejestr gRejestr;
+#include "ProgramGlowny/listaklientow.h"
+#include "ProgramGlowny/modelrejestr.h"
+extern ListaPsow gListaPsow;
+//extern Rejestr gRejestr;
+extern ListaKlientow gListaKlientow;
 
 class SchroniskoTesty : public QObject
 {
@@ -30,7 +31,6 @@ private Q_SLOTS:
     void testPrzydzieleniePsa();
     void testDatyPrzydzielenia();
     void testAtrybutyKlienta();
-    void testFunkcjiToStringKlienta();
     void testWyswietlenieListyPrzydzielen();
 };
 
@@ -41,7 +41,6 @@ SchroniskoTesty::SchroniskoTesty()
 void SchroniskoTesty::testDodaniePsa()
 {
     Pies* wskPies = new Pies(184, "Burek", 4, Grozny, "Bernardyn" );
-
     ListaPsow psyWSchronisku;
     psyWSchronisku.dodajPsa(wskPies);
     assert(psyWSchronisku.getPies(184));
@@ -94,7 +93,6 @@ void SchroniskoTesty::testPobranieListyPsow()
     ListaPsow psyWSchronisku;
     psyWSchronisku.dodajPsa(wskPies1);
     psyWSchronisku.dodajPsa(wskPies2);
-
 
     QStringList listaTestowa1;
     listaTestowa1.append( wskPies1->toString() );
@@ -149,31 +147,41 @@ void SchroniskoTesty::testPobranieListyPsowDanegoRodzaju()
 
 void SchroniskoTesty::testPrzydzieleniePsa()
 {
-    Pies* wskPies = new Pies(1, "Dino", 8, Grozny, "Owczarek" );
+//    Pies* pies = new Pies(1, "Dino", 8, Grozny, "Owczarek" );
+//    Klient* klient = new Klient(2, "Jan", "Bury", "ul. Osa 12; Bydgoszcz; 85790", 857464757);
+//    QDate* dataPrzydzielenia = new QDate(2014, 07, 23);
+//    WydaniePsa* wydaniePsa = new WydaniePsa(pies, klient, dataPrzydzielenia);
 
-    gListaPsow.dodajPsa(wskPies);  // przypadek testowy pokazał, że potrzebujemy globalnej listy psów
-    assert(gListaPsow.getPies(1));
+//    ModelRejestr* modelRejestr = new ModelRejestr(this);
 
-    Klient* wskKlient = new Klient(2, "Jan", "Bury", "ul. Osa 12; Bydgoszcz; 85790", 857464757);
+//    int row = modelRejestr->rowCount();
+//    modelRejestr->insertRows( row, 1, wydaniePsa );
 
-    QDate* wskDataPrzydzielenia = new QDate(2014, 07, 23);
-    PrzydzielPsaTransakcja przydzielPsa(wskPies, wskKlient , wskDataPrzydzielenia);
-    przydzielPsa.wykonaj();
+//    gListaKlientow.dodajKlienta(klient);
+//    assert(gListaKlientow.getKlient(2));
 
-    Pies* wskPiesPobrany = gRejestr.getPies(1);
-    assert(wskPiesPobrany);
+//    QDate* dataPrzydzielenia = new QDate(2014, 07, 23);
+//    PrzydzielPsaTransakcja przydzielPsa(pies, klient , dataPrzydzielenia);
+//    przydzielPsa.wykonaj();
 
-    Klient* wskKlientPobrany = gRejestr.getKlient(2);
-    assert(wskKlientPobrany);
+//    Pies* piesPobrany = gRejestr.getPies(1);
+//    assert(piesPobrany);
 
-    Pies* wskPiesZListyPsow = gListaPsow.getPies(1);
-    assert( wskPiesZListyPsow == 0 );
+//    Klient* klientPobrany = gRejestr.getKlient(2);
+//    assert(klientPobrany);
+
+//    Pies* piesZListyPsow = gListaPsow.getPies(1);
+//    assert( piesZListyPsow == 0 );
+
+//    Klient* klientZListyKlientow = gListaKlientow.getKlient(2);
+//    assert(klientZListyKlientow);
 
 //    QDate* wskPobranaData = wskPies->getDataPrzydzielenia(); // data dodana, wskaźnik pobrany oraz wskaźnik na dodaną datę
 //    QCOMPARE(wskDataPrzydzielenia, wskPobranaData);          // pokazują na ten sam adres
 
-    gListaPsow.wyczysc();
-    gRejestr.wyczysc();
+//    gListaKlientow.wyczysc();
+//    gListaPsow.wyczysc();
+    //gRejestr.wyczysc();
 }
 
 void SchroniskoTesty::testAtrybutyKlienta()
@@ -200,12 +208,6 @@ void SchroniskoTesty::testAtrybutyKlienta()
 
     QEXPECT_FAIL("", "test na niewłaściwe dane : niezgodny numer", Continue);
     QCOMPARE( 515987464, klient.getNumerTelefonu() );
-}
-
-void SchroniskoTesty::testFunkcjiToStringKlienta()
-{
-    Klient klient(123, "Józef", "Jung", "ul. Bema 12; Nysa; 42390", 345828740);
-    qDebug() << klient.toString();
 }
 
 void SchroniskoTesty::testWyswietlenieListyPrzydzielen()
@@ -235,6 +237,7 @@ void SchroniskoTesty::testDatyPrzydzielenia()
 //    qDeleteAll(gRejestracjaWydanychPsow);  // wyczyszczenie mapy po teście
 //    gRejestracjaWydanychPsow.clear();
 }
+
 QTEST_APPLESS_MAIN(SchroniskoTesty)
 
 #include "tst_schroniskotesty.moc"

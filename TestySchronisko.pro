@@ -19,17 +19,19 @@ SOURCES += ProgramGlowny/pies.cpp \
            ProgramGlowny/przydzielpsatransakcja.cpp \
            ProgramGlowny/transakcja.cpp \
            ProgramGlowny/klient.cpp \
-           ProgramGlowny/rejestr.cpp \
+           ProgramGlowny/modelrejestr.cpp \
            ProgramGlowny/wydaniepsa.cpp \
-           ProgramGlowny/listaklientow.h
+           ProgramGlowny/listaklientow.h \
+           ProgramGlowny/modelrejestr.cpp
 
 HEADERS += ProgramGlowny/pies.h \
            ProgramGlowny/listapsow.h \
            ProgramGlowny/transakcja.h \
            ProgramGlowny/klient.h \
-           ProgramGlowny/rejestr.cpp \
+           ProgramGlowny/modelrejestr.cpp \
            ProgramGlowny/wydaniepsa.cpp \
-           ProgramGlowny/listaklientow.cpp
+           ProgramGlowny/listaklientow.cpp \
+           ProgramGlowny/modelrejestr.cpp
 
 SOURCES += tst_schroniskotesty.cpp
 DEFINES += SRCDIR=\\\"$$PWD/\\\"

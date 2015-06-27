@@ -15,22 +15,24 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     klient.cpp \
-    listapsow.cpp \
     pies.cpp \
     przydzielpsatransakcja.cpp \
     transakcja.cpp \
     wydaniepsa.cpp \
     rejestr.cpp \
-    listaklientow.cpp
+    modelrejestr.cpp \
+    modelpsy.cpp \
+    modelklienci.cpp
 
 HEADERS  += mainwindow.h \
     klient.h \
-    listapsow.h \
     pies.h \
     przydzielpsatransakcja.h \
     transakcja.h \
     wydaniepsa.h \
     rejestr.h \
-    listaklientow.h
+    modelrejestr.h \
+    modelpsy.h \
+    modelklienci.h
 
 FORMS    += mainwindow.ui

@@ -2,7 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include <QCloseEvent>
+#include <QTableView>
+#include "modelrejestr.h"
 namespace Ui {
 class MainWindow;
 }
@@ -16,7 +18,15 @@ public:
     ~MainWindow();
 
 private:
+    void closeEvent(QCloseEvent* event);
+
+private slots:
+    void dodajPsa();
+
+private:
     Ui::MainWindow *ui;
+    ModelRejestr *modelRejestr;
+    QTableView *widokRejestr;
 };
 
 #endif // MAINWINDOW_H
