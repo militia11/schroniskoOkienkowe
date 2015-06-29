@@ -20,8 +20,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QDate* dataPrzydzielenia = new QDate(2014, 07, 23);
     WydaniePsa* wydaniePsa = new WydaniePsa(pies, klient, dataPrzydzielenia);
 
-
-
     modelRejestr = new ModelRejestr(this);
     widokRejestr = new QTableView(this);
     widokRejestr->setModel(modelRejestr);
@@ -32,7 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
 }
 void MainWindow::closeEvent(QCloseEvent *event) {
     //if(modelCareer->rowCount() || modelPeople->rowCount() ) {
-        if( (QMessageBox::warning( this, "WARNING", "<center>Do you want to close application? You have data in models. Any unsaved data will be lost. Do you want to quit application?", QMessageBox::Yes | QMessageBox::No) ) == QMessageBox::No) {
+        if( (QMessageBox::warning( this, "UWAGA", "<center> Wszystkie niezapisane dane zostaną utracone.<BR> Zamknąć aplikację?", QMessageBox::Yes | QMessageBox::No) ) == QMessageBox::No) {
             event->ignore();
             return;
         }

@@ -4,13 +4,16 @@
 #include "transakcja.h"
 #include "QDate"
 
+class ModelKlienci;
+class ModelPsy;
+class ModelRejestr;
 class Pies;
 class Klient;
 class PrzydzielPsaTransakcja : public Transakcja
 {
 
 public:
-    PrzydzielPsaTransakcja(Pies* pies, Klient* klient, QDate* dataPrzydzielenia);
+    PrzydzielPsaTransakcja(Pies* pies, Klient* klient, QDate* dataPrzydzielenia, ModelPsy* psy, ModelKlienci* klienci,  ModelRejestr * wydania);
     virtual void wykonaj();
 
 private:

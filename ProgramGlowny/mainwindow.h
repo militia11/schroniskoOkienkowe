@@ -5,6 +5,9 @@
 #include <QCloseEvent>
 #include <QTableView>
 #include "modelrejestr.h"
+#include "modelklienci.h"
+#include "modelpsy.h"
+
 namespace Ui {
 class MainWindow;
 }

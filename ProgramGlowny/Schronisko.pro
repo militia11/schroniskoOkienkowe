@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     rejestr.cpp \
     modelrejestr.cpp \
     modelpsy.cpp \
-    modelklienci.cpp
+    modelklienci.cpp \
+    dodajpsadialog.cpp
 
 HEADERS  += mainwindow.h \
     klient.h \
@@ -33,6 +34,8 @@ HEADERS  += mainwindow.h \
     rejestr.h \
     modelrejestr.h \
     modelpsy.h \
-    modelklienci.h
+    modelklienci.h \
+    dodajpsadialog.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    dodajpsadialog.ui

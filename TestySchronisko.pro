@@ -15,14 +15,15 @@ CONFIG   -= app_bundle
 TEMPLATE = app
 
 SOURCES += ProgramGlowny/pies.cpp \
-           ProgramGlowny/listapsow.cpp \
            ProgramGlowny/przydzielpsatransakcja.cpp \
            ProgramGlowny/transakcja.cpp \
            ProgramGlowny/klient.cpp \
            ProgramGlowny/modelrejestr.cpp \
            ProgramGlowny/wydaniepsa.cpp \
-           ProgramGlowny/listaklientow.h \
-           ProgramGlowny/modelrejestr.cpp
+           ProgramGlowny/modelrejestr.cpp \
+           ProgramGlowny/modelklienci.cpp \
+           ProgramGlowny/modelpsy.cpp \
+
 
 HEADERS += ProgramGlowny/pies.h \
            ProgramGlowny/listapsow.h \
@@ -30,8 +31,9 @@ HEADERS += ProgramGlowny/pies.h \
            ProgramGlowny/klient.h \
            ProgramGlowny/modelrejestr.cpp \
            ProgramGlowny/wydaniepsa.cpp \
-           ProgramGlowny/listaklientow.cpp \
-           ProgramGlowny/modelrejestr.cpp
+           ProgramGlowny/modelklienci.h \
+           ProgramGlowny/modelpsy.h \
+           ProgramGlowny/modelrejestr.h
 
 SOURCES += tst_schroniskotesty.cpp
 DEFINES += SRCDIR=\\\"$$PWD/\\\"
