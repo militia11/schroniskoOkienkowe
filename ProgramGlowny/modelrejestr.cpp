@@ -1,12 +1,14 @@
 ﻿#include "modelrejestr.h"
 #include "klient.h"
 #include "pies.h"
+#include <QMessageBox>
 
-static const int LICZBA_KOLUMN(5);
+static const int LICZBA_KOLUMN(6);
+
+ModelRejestr modelRejestr;
 
 ModelRejestr::ModelRejestr(QObject *parent) : QAbstractTableModel(parent)
 {
-
 }
 
 ModelRejestr::~ModelRejestr()
@@ -49,14 +51,20 @@ QVariant ModelRejestr::data(const QModelIndex &index, int role) const
     if(role != Qt::DisplayRole) {
         return QVariant();
     }
-    int row = index.row();
+    int rzad = index.row();
     switch( index.column() ) {
         case 0:
-              return wydania[row]->getKlient()->getImie();
+              return wydania[rzad]->getData();
         case 1:
-              return wydania[row]->getPies()->getImie();
-//        case 2:
-//              return wydania[row]->getData(); // dorobic
+              return wydania[rzad]->getPies()->getImie();
+        case 2:
+              return wydania[rzad]->getPies()->getId();
+        case 3:
+              return wydania[rzad]->getKlient()->getImie();
+        case 4:
+              return wydania[rzad]->getKlient()->getNazwisko();
+        case 5:
+              return wydania[rzad]->getKlient()->getId();
         default:
               return QVariant();
     }
@@ -79,66 +87,53 @@ QVariant ModelRejestr::headerData(int section, Qt::Orientation orientation, int 
     if ( orientation != Qt::Horizontal || role != Qt::DisplayRole )
         return QAbstractItemModel::headerData( section, orientation, role );
     switch ( section ) {
-        case 0: return "Klient:";
+        case 0: return "Data wydania";
         case 1: return "Pies";
-//        case 2: return "Data:";
-//        case 3: return "";
-//        case 4: return "x";
+        case 2: return "ID psa";
+        case 3: return "Klient Imie";
+        case 4: return "Klient Nazwisko";
+        case 5: return "ID klienta";
     }
     return QVariant();
 }
 
 bool ModelRejestr::setData(const QModelIndex &index, const QVariant &value, int role)
 {
-    /*if(role != Qt::EditRole) return false;
-    int row = index.row(), col = index.column(); // pozniej przerobic na switch:
+//    case 0: return "Data wydania";
+//    case 1: return "Pies";
+//    case 2: return "ID psa";
+//    case 3: return "Klient Imie";
+//    case 4: return "Klient Nazwisko";
+//    case 5: return "ID klienta";
+    if(role != Qt::EditRole) return false;
+    int rzad = index.row(), col = index.column(); // pozniej przerobic na switch:
     if( col == 0 ) {
-        if( !value.toString().isEmpty() ) m_People[row]->setName(value.toString());
-        else {
-            QMessageBox::warning( 0, "Warning Incorrect Person Name","<center>You can't set <b>empty</b> word as Person's name.<br> Please enter correct Person's' name. ",QMessageBox::Ok);
-        }
+       ; // doroooooooooooobic
     }
     if( col == 1 ) {
-        m_People[row]->setPhoneNumber(value.toString());
+        if( !value.toString().isEmpty() )
+            wydania[rzad]->getPies()->setId( value.toInt() );
+        else {
+            QMessageBox::warning( 0, "UWAGA","<center>Nie można ustawić <b>pustego</b> imienia psa.<br> Proszę wprowadź poprawne imie psa ", QMessageBox::Ok);
+        }
     }
     if( col == 2 ) {
-        m_People[row]->setCity(value.toString());
+        if( !value.toString().isEmpty() )
+            wydania[rzad]->getPies()->setId( value.toInt() );
+        else {
+            QMessageBox::warning( 0, "UWAGA","<center>Nie można ustawić <b>pustego</b> numeru ID psa.<br> Proszę wprowadź poprawny numer ID psa ", QMessageBox::Ok);
+        }
     }
-    if( col == 3 ) {
-        m_People[row]->setAge(value.toInt());
-    }
-    if( col == 4 ) {
-        m_People[row]->setPESEL(value.toLongLong());
-    }
-    QModelIndex indexAfterChanged = createIndex(row,col);
-    emit dataChanged(indexAfterChanged,indexAfterChanged)*/;
+//    if( col == 3 ) {
+//        wydania[row]->setNumerTelefonu( value.toString() );
+//    }
+//    if( col == 4 ) {
+//        wydania[row]->setUlica( value.toString() );
+//    }
+//    if( col == 5 ) {
+//        wydania[row]->setNumerDomu( value.toInt() );
+//    }
+    QModelIndex indexAfterChanged = createIndex(rzad,col);
+    emit dataChanged(indexAfterChanged,indexAfterChanged);
     return true;
 }
-
-
-
-// takie  byly
-//bool PersonItemModel::setData(const QModelIndex &index, const QVariant &value, int role) {
-
-//}
-//QVariant PersonItemModel::headerData(const int section, const Qt::Orientation orientation, const int role) const {
-
-//}
-
-
-//niewykorzystane jeszcze
-
-//void PersonItemModel::insertRows(int row, int count,QList<Person*> people, const QModelIndex &parent ) {
-//    beginInsertRows(parent,row, row + count - 1);
-//    for ( int i=0; i < count; ++i) {
-//        m_People.insert(row + i, people[i]);
-//    }
-//    endInsertRows();
-//}
-//Person* PersonItemModel::getItem(int row) const {
-//    return m_People[row];
-//}
-
-//QList<Person*> PersonItemModel::getData() const {
-//    return m_People;
-//}

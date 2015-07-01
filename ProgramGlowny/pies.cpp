@@ -1,6 +1,6 @@
 #include "pies.h"
 #include "QDate"
-
+#include <QMessageBox>
 
 Pies::Pies(int id, QString imie, int wiek, RodzajPsa rodzaj, QString rasa)
     : id(id),
@@ -34,6 +34,43 @@ RodzajPsa Pies::getRodzaj() const
 QString Pies::getRasa() const
 {
     return rasa;
+}
+
+void Pies::setId(int noweId)
+{
+    id = noweId;
+}
+
+void Pies::setImie(QString noweImie)
+{
+    imie = noweImie;
+}
+
+void Pies::setWiek(int nowyWiek)
+{
+    wiek = nowyWiek;
+}
+
+void Pies::setRodzaj(QString nowyRodzaj)
+{
+
+//    if( nowyRodzaj == QString("Łagodny") )
+//        rodzaj = Lagodny;
+//    else if( nowyRodzaj == QString("Agresywny") )
+//        rodzaj = Grozny;
+//    else if( nowyRodzaj == QString("Do domu") )
+//        rodzaj = Grozny;
+//    else if( nowyRodzaj == QString("Na podwórko") )
+//        rodzaj = Nieokreslony;
+//    else if( nowyRodzaj == QString("Nieokreślony") )
+//        rodzaj = Nieokreslony;
+//    else
+//        QMessageBox::warning( 0, "UWAGA","Niepoprawny rodzaj psa. <br>Proszę ustawić poprawny <br><b>Łagodny, Agresywny, Do domu, Na podwórko, Nieokreślony</b>lub <b>Nieokreślony</b><br> ",QMessageBox::Ok);
+}
+
+void Pies::setRasa(QString nowaRasa)
+{
+    rasa = nowaRasa;
 }
 
 QString Pies::toString() const

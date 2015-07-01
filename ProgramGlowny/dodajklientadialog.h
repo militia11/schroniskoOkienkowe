@@ -1,12 +1,21 @@
-#ifndef KLIENT_H
-#define KLIENT_H
+#ifndef DODAJKLIENTADIALOG_H
+#define DODAJKLIENTADIALOG_H
 
-#include <QString>
+#include <QDialog>
+#include <QRegExp>
 
-class Klient
+namespace Ui {
+class DodajKlientaDialog;
+}
+
+class DodajKlientaDialog : public QDialog
 {
+    Q_OBJECT
+
 public:
-    Klient(int id, QString imie, QString nazwisko, QString numerTelefonu, QString ulica, int numerDomu, QString miasto, QString kodPocztowy);
+    explicit DodajKlientaDialog(QWidget *parent = 0);
+    ~DodajKlientaDialog();
+
     int getId() const;
     QString getImie() const;
     QString getNazwisko() const;
@@ -24,9 +33,13 @@ public:
     void setMiasto(QString noweMiasto);
     void setKodPocztowy(QString nowyKodPocztowy);
 
-    QString toString() const;
+private slots:
+    void on_buttonBox_accepted();
+    void on_buttonBox_rejected();
 
 private:
+    Ui::DodajKlientaDialog *ui;
+    static QRegExp formatNrTelefonu;
     int id;
     QString imie;
     QString nazwisko;
@@ -37,4 +50,4 @@ private:
     QString kodPocztowy;
 };
 
-#endif // KLIENT_H
+#endif // DODAJKLIENTADIALOG_H

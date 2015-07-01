@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>DodajPsaDialog</class>
- <widget class="QDialog" name="DodajPsaDialog">
+ <class>DodajKlientaDialog</class>
+ <widget class="QDialog" name="DodajKlientaDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>278</height>
+    <width>396</width>
+    <height>376</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dodaj Psa</string>
+   <string>Formularz dodania klienta</string>
   </property>
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>220</y>
-     <width>351</width>
+     <x>30</x>
+     <y>320</y>
+     <width>341</width>
      <height>32</height>
     </rect>
    </property>
@@ -33,9 +33,9 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>21</y>
+     <y>20</y>
      <width>351</width>
-     <height>181</height>
+     <height>281</height>
     </rect>
    </property>
    <layout class="QFormLayout" name="formLayout">
@@ -75,32 +75,62 @@
     <item row="3" column="0">
      <widget class="QLabel" name="label_3">
       <property name="text">
-       <string>Wiek:</string>
+       <string>Nazwisko:                             *</string>
       </property>
      </widget>
     </item>
     <item row="3" column="1">
-     <widget class="QSpinBox" name="spinBoxWiek"/>
+     <widget class="QLineEdit" name="lineEditNazwisko"/>
     </item>
     <item row="4" column="0">
      <widget class="QLabel" name="label_4">
       <property name="text">
-       <string>Rasa:</string>
+       <string>Nr tel ( XXX-XXX-XXX ):</string>
       </property>
      </widget>
     </item>
     <item row="4" column="1">
-     <widget class="QLineEdit" name="lineEditRasa"/>
+     <widget class="QLineEdit" name="lineEditNumerTelefonu"/>
     </item>
     <item row="5" column="0">
      <widget class="QLabel" name="label_5">
       <property name="text">
-       <string>Rodzaj:</string>
+       <string>Ulica:</string>
       </property>
      </widget>
     </item>
     <item row="5" column="1">
-     <widget class="QComboBox" name="comboBoxRodzaj"/>
+     <widget class="QLineEdit" name="lineEditUlica"/>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLabel" name="label_6">
+      <property name="text">
+       <string>Nr domu:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QSpinBox" name="spinBoxNrDomu"/>
+    </item>
+    <item row="7" column="0">
+     <widget class="QLabel" name="label_8">
+      <property name="text">
+       <string>Miasto:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="1">
+     <widget class="QLineEdit" name="lineEditMiasto"/>
+    </item>
+    <item row="8" column="0">
+     <widget class="QLabel" name="label_9">
+      <property name="text">
+       <string>Kod pocztowy:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="1">
+     <widget class="QLineEdit" name="lineEditKodPocztowy"/>
     </item>
    </layout>
   </widget>

@@ -6,12 +6,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>896</width>
+    <height>643</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Schronisko  v1.0</string>
   </property>
   <widget class="QWidget" name="centralWidget"/>
   <widget class="QMenuBar" name="menuBar">
@@ -19,7 +19,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
+     <width>896</width>
      <height>25</height>
     </rect>
    </property>
@@ -27,7 +27,10 @@
     <property name="title">
      <string>Schronisko</string>
     </property>
+    <addaction name="actionWydajpsa"/>
+    <addaction name="separator"/>
     <addaction name="actionDodajPsa"/>
+    <addaction name="actionUsunPsa"/>
    </widget>
    <widget class="QMenu" name="menuPlik_2">
     <property name="title">
@@ -35,26 +38,64 @@
     </property>
     <addaction name="actionZamknij"/>
    </widget>
+   <widget class="QMenu" name="menuWidok">
+    <property name="title">
+     <string>Widok</string>
+    </property>
+    <addaction name="actionRejestrWydan"/>
+    <addaction name="separator"/>
+    <addaction name="actionListaKlientow"/>
+    <addaction name="separator"/>
+    <addaction name="actionListaPsy"/>
+   </widget>
    <addaction name="menuPlik_2"/>
    <addaction name="menuPlik"/>
+   <addaction name="menuWidok"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
+   <property name="windowTitle">
+    <string>Widok Listy</string>
+   </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actionDodajPsa"/>
+   <addaction name="separator"/>
+   <addaction name="actionRejestrWydan"/>
+   <addaction name="separator"/>
+   <addaction name="actionListaPsy"/>
+   <addaction name="separator"/>
+   <addaction name="actionListaKlientow"/>
    <addaction name="separator"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>Dzialania</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>LeftToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionWydajpsa"/>
+   <addaction name="separator"/>
+   <addaction name="actionDodajPsa"/>
+   <addaction name="separator"/>
+   <addaction name="actionUsunPsa"/>
+  </widget>
   <action name="actionDodajPsa">
    <property name="text">
-    <string>Dodaj Psa</string>
+    <string>Dodaj psa</string>
    </property>
    <property name="toolTip">
-    <string>dodanie Psa do listy Psow</string>
+    <string>dodanie Psa do listy Psow (Ctrl + N)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+N</string>
    </property>
   </action>
   <action name="actionZamknij">
@@ -62,7 +103,74 @@
     <string>Zamknij</string>
    </property>
    <property name="toolTip">
-    <string>Wyjście do systemu</string>
+    <string>Wyjście do systemu ( Ctrl + X )</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
+   </property>
+  </action>
+  <action name="actionUsunPsa">
+   <property name="text">
+    <string>Usuń psa</string>
+   </property>
+   <property name="toolTip">
+    <string>Usuń bezpowrotnie psa ( Ctrl + X )</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+X</string>
+   </property>
+  </action>
+  <action name="actionRejestrWydan">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Rejestr Wydań</string>
+   </property>
+   <property name="toolTip">
+    <string>Pokaż Rejestr Wydań (Ctrl + W)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+W</string>
+   </property>
+  </action>
+  <action name="actionListaPsy">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Lista Psów</string>
+   </property>
+   <property name="toolTip">
+    <string>Pokaż Listę Psów (Ctrl + P)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
+   </property>
+  </action>
+  <action name="actionListaKlientow">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Lista Klientów</string>
+   </property>
+   <property name="toolTip">
+    <string>Pokaż Liste Klientów (Ctrl + K)</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+K</string>
+   </property>
+  </action>
+  <action name="actionWydajpsa">
+   <property name="text">
+    <string>Wydaj psa</string>
+   </property>
+   <property name="toolTip">
+    <string>Wydaj psa nowemu wlascicielowi ( Ctrl + T )</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+T</string>
    </property>
   </action>
  </widget>

@@ -1,21 +1,23 @@
 #ifndef WYDANIEPSA_H
 #define WYDANIEPSA_H
 
-class QDate;
+#include <QDate>
+
 class Pies;
 class Klient;
 
 class WydaniePsa
 {
 public:
-    WydaniePsa(Pies* pies, Klient* klient, QDate* dataWydania);
-    Pies* getPies();
-    Klient* getKlient();
+    WydaniePsa(Pies* pies, Klient* klient, const QDate &dataWydania);
+    Pies* getPies() const;
+    Klient* getKlient() const;
+    QDate getData() const;
 
 private:
     Pies* pies;
     Klient* klient;
-    QDate* dataWydania;
+    QDate dataWydania;
 };
 
 #endif // WYDANIEPSA_H

@@ -1,28 +1,32 @@
 #ifndef PRZYDZIELPSATRANSAKCJA_H
 #define PRZYDZIELPSATRANSAKCJA_H
 
-#include "transakcja.h"
 #include "QDate"
+#include "transakcja.h"
+#include <QTableView>
 
-class ModelKlienci;
-class ModelPsy;
+//class ModelKlienci;
+//class ModelPsy;
 class ModelRejestr;
-class Pies;
+
+//class Pies;
 class Klient;
 class PrzydzielPsaTransakcja : public Transakcja
 {
 
 public:
-    PrzydzielPsaTransakcja(Pies* pies, Klient* klient, QDate* dataPrzydzielenia, ModelPsy* psy, ModelKlienci* klienci,  ModelRejestr * wydania);
+    PrzydzielPsaTransakcja(Klient* klient, QTableView *widok);//Pies* pies, Klient* klient, QDate* dataPrzydzielenia
     virtual void wykonaj();
 
 private:
+    // moze usunac
     PrzydzielPsaTransakcja(const PrzydzielPsaTransakcja&);
     PrzydzielPsaTransakcja& operator=(const PrzydzielPsaTransakcja&);
 
-    Pies* wskPies;
-    Klient* wskKlient;
-    QDate* dataPrzydzielenia;
+    QTableView* widok;
+//    Pies* wskPies;
+    Klient* klient;
+//    QDate* dataPrzydzielenia;
 };
 
 #endif // PRZYDZIELPSATRANSAKCJA_H

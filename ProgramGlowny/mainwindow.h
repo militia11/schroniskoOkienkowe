@@ -4,9 +4,8 @@
 #include <QMainWindow>
 #include <QCloseEvent>
 #include <QTableView>
-#include "modelrejestr.h"
-#include "modelklienci.h"
-#include "modelpsy.h"
+#include "delegatdanych.h"
+#include "dodajpsadialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -22,14 +21,24 @@ public:
 
 private:
     void closeEvent(QCloseEvent* event);
+    void wydajPsaDodajacKlientaIPsa();
+    void wydajPsaDodajacKlienta();
 
 private slots:
+    void aktualizujWidok();
+    void wydajPsa();
     void dodajPsa();
+    void usunPsa();
+
+    void pokazRejestr();
+    void pokazPsy();
+    void pokazKlientow();
 
 private:
     Ui::MainWindow *ui;
-    ModelRejestr *modelRejestr;
     QTableView *widokRejestr;
+    QTableView *widok;
+    DelegatDanych* delegat;
 };
 
 #endif // MAINWINDOW_H

@@ -1,23 +1,42 @@
 #include "przydzielpsatransakcja.h"
-#include "wydaniepsa.h"
-#include "rejestr.h"
-#include "modelklienci.h"
+//#include "wydaniepsa.h"
 #include "modelpsy.h"
 #include "modelrejestr.h"
+#include "klient.h"
+#include "usunpsatransakcja.h"
+#include <QModelIndex>
 
-extern Rejestr gRejestr;
+extern ModelPsy modelPsy;
+extern ModelRejestr modelRejestr;
 
-PrzydzielPsaTransakcja::PrzydzielPsaTransakcja(Pies* pies, Klient* klient, QDate *dataPrzydzieleniaz, ModelPsy* psy, ModelKlienci* klienci,  ModelRejestr * wydania)
-    : wskPies(pies),
-      wskKlient(klient),
-      dataPrzydzielenia(dataPrzydzielenia)
+PrzydzielPsaTransakcja::PrzydzielPsaTransakcja(Klient *klient, QTableView* widok)
+    : klient(klient),
+      widok(widok)
 {
 }
 
 void PrzydzielPsaTransakcja::wykonaj()
 {
+    QModelIndex index = widok->selectionModel()->currentIndex();
+    int rzadp = index.row();
+    Pies* pies = modelPsy.getPies(rzadp);
+
+    QDate dataPrzydzielenia = QDate::currentDate();
+    //QDate dataPrzydzielenia(2014,11,02);  //= dataPrzydzielenia.currentDate();
+    WydaniePsa* wydaniePsa = new WydaniePsa(pies, klient, dataPrzydzielenia);
+
+    //dodaj
+    int rzadw = modelRejestr.rowCount();
+    modelRejestr.insertRows( rzadw, 1, wydaniePsa );
+
+    // usunięcia psa z listy psów
+    UsunPsaTransakcja transakcja(widok);
+    transakcja.wykonaj();
+
+//    int rzad = modelPsy.rowCount();
+//    modelPsy.insertRows( rzad, 1, pies );
+
 //    gListaPsow.usunPsa(wskPies);
-//    WydaniePsa* wydaniePsa = new WydaniePsa(wskPies, wskKlient, dataPrzydzielenia);
 //    gRejestr.dodaj(wydaniePsa);
 }
 

@@ -19,11 +19,16 @@ SOURCES += main.cpp\
     przydzielpsatransakcja.cpp \
     transakcja.cpp \
     wydaniepsa.cpp \
-    rejestr.cpp \
     modelrejestr.cpp \
     modelpsy.cpp \
     modelklienci.cpp \
-    dodajpsadialog.cpp
+    dodajpsadialog.cpp \
+    dodajpsatransakcja.cpp \
+    usunpsatransakcja.cpp \
+    delegatdanych.cpp \
+    wydajpsadialog.cpp \
+    dodajklientadialog.cpp \
+    dodajklientatransakcja.cpp
 
 HEADERS  += mainwindow.h \
     klient.h \
@@ -31,11 +36,18 @@ HEADERS  += mainwindow.h \
     przydzielpsatransakcja.h \
     transakcja.h \
     wydaniepsa.h \
-    rejestr.h \
     modelrejestr.h \
     modelpsy.h \
     modelklienci.h \
-    dodajpsadialog.h
+    dodajpsadialog.h \
+    dodajpsatransakcja.h \
+    usunpsatransakcja.h \
+    delegatdanych.h \
+    wydajpsadialog.h \
+    dodajklientadialog.h \
+    dodajklientatransakcja.h
 
 FORMS    += mainwindow.ui \
-    dodajpsadialog.ui
+    dodajpsadialog.ui \
+    wydajpsadialog.ui \
+    dodajklientadialog.ui

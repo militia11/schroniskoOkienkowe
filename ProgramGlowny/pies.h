@@ -4,7 +4,7 @@
 #include <QString>
 
 class QDate;
-enum RodzajPsa { Lagodny, Grozny };
+enum RodzajPsa { Nieokreslony , Lagodny, Agresywny, DoDomu, NaPodworko };
 
 class Pies
 {
@@ -15,6 +15,11 @@ public:
     int getWiek() const;
     RodzajPsa getRodzaj() const;
     QString getRasa() const;
+    void setId(int noweId);
+    void setImie(QString noweImie);
+    void setWiek(int nowyWiek);
+    void setRodzaj(QString nowyRodzaj);
+    void setRasa(QString nowaRasa);
     QString toString() const;
 
 private:
